@@ -1,0 +1,41 @@
+table.leegbordRood td{
+  background-image: url(images/fillempty.png);
+  width: 50px;
+  height: 50px;
+}
+
+table.leegbordRood th{
+  background-image: url(images/clearness.gif);
+  width: 50px;
+  height: 50px;
+}
+
+table.leegbordRood th:hover {
+  background-image: url(images/rood.png);
+  width: 50px;
+  height: 50px;
+}
+
+table.leegbordGeel td{
+  background-image: url(images/fillempty.png);
+  width: 50px;
+  height: 50px;
+}
+
+table.leegbordGeel th{
+  background-image: url(images/clearness.gif);
+  width: 50px;
+  height: 50px;
+}
+
+table.leegbordGeel th:hover {
+  background-image: url(images/geel.png);
+  width: 50px;
+  height: 50px;
+}
+
+body
+{
+background-image:url('images/background.png');
+background-repeat:repeat-x;
+}
