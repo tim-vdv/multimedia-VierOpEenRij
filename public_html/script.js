@@ -1,7 +1,39 @@
 var items = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
 var tellers = {"0":5, "1":5, "2":5, "3":5, "4":5, "5":5, "6":5};
 var kleur = "Rood";
+var scoreRoodValue = 0;
+var scoreGeelValue = 0;
+
+
+window.onload = function() {
+   scoreRoodValue =0;
+   scoreGeelValue=0;
+   document.getElementById("scoreRood").innerHTML="Rood: " + scoreRoodValue;
+   document.getElementById("scoreGeel").innerHTML="Geel: " + scoreGeelValue;
+} 
+
+function score(){
+   document.getElementById("scoreRood").innerHTML="Rood: " + scoreRoodValue;
+   document.getElementById("scoreGeel").innerHTML="Geel: " + scoreGeelValue;
+}
+
+function leegBord(){
+    var tellerKolom = 0;
+    
+    while(tellerKolom<=5){
+        var tellerRij = 0;
+        while(tellerRij<=6){
+            document.getElementById("rij"+ tellerKolom +""+tellerRij).style.backgroundImage = "url('images/fillempty.png')";
+            tellerRij++;
+        }
+        tellerKolom++;
         
+    }
+    items = [[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0]];
+    tellers = {"0":5, "1":5, "2":5, "3":5, "4":5, "5":5, "6":5};
+    
+}
+
 function rijKlik(kolom){
     
     if(kleur === "Rood"){
@@ -50,11 +82,15 @@ function verticaal(){
             
             if(gewonnenKleur.indexOf("RRRR") !== -1){
                 winnendekleur = "Rood";
+                scoreRoodValue++;
             }
             else{
                 winnendekleur = "Geel";
+                scoreGeelValue++;
             }
             alert(winnendekleur + " is gewonnen!");
+            score();
+            leegBord();
             return false;
         }
         else
@@ -86,11 +122,15 @@ function horizontaal(){
             
             if(gewonnenKleur.indexOf("RRRR") !== -1){
                 winnendekleur = "Rood";
+                scoreRoodValue++;
             }
             else{
                 winnendekleur = "Geel";
+                scoreGeelValue++;
             }
             alert(winnendekleur + " is gewonnen!");
+            score();
+            leegBord();
             return false;
         }
         else
@@ -118,7 +158,10 @@ function diagonaal1(){
                 if(items[i-1][e+1] === 2){
                     if(items[i-2][e+2] === 2){
                         if(items[i-3][e+3] === 2){
+                            scoreRoodValue++;
                             alert("Rood is gewonnen!");
+                            score();
+                            leegBord();
                         }
                     }
                      
@@ -128,7 +171,10 @@ function diagonaal1(){
                 if(items[i-1][e+1] === 1){
                     if(items[i-2][e+2] === 1){
                         if(items[i-3][e+3] === 1){
+                            scoreGeelValue++;
                             alert("Geel is gewonnen!");
+                            score();
+                            leegBord();
                         }
                     }
                      
@@ -145,7 +191,10 @@ function diagonaal2(){
                 if(items[i-1][e-1] === 2){
                     if(items[i-2][e-2] === 2){
                         if(items[i-3][e-3] === 2){
+                            scoreRoodValue++;
                             alert("Rood is gewonnen!");
+                            score();
+                            leegBord();
                         }
                     }
                      
@@ -155,7 +204,10 @@ function diagonaal2(){
                 if(items[i-1][e-1] === 1){
                     if(items[i-2][e-2] === 1){
                         if(items[i-3][e-3] === 1){
+                            scoreGeelValue++;
                             alert("Geel is gewonnen!");
+                            score();
+                            leegBord();
                         }
                     }
                      
