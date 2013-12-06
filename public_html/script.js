@@ -35,12 +35,12 @@ function leegBord(){
 }
 
 function rijKlik(kolom){
-    
+    playSound();
     if(kleur === "Rood"){
     if((tellers[kolom]) >= 0){
         if(items[(tellers[kolom])][kolom] === 0){
-            items[(tellers[kolom])][kolom] = 2;
             document.getElementById("rij"+ (tellers[kolom]) + kolom).style.backgroundImage = "url('images/fullrood.png')";
+            items[(tellers[kolom])][kolom] = 2;
             (tellers[kolom])--;
             kleurVerandering("Geel");     
             verticaal();
@@ -52,8 +52,8 @@ function rijKlik(kolom){
 }else{
         if((tellers[kolom]) >= 0){
         if(items[(tellers[kolom])][kolom] === 0){
-            items[(tellers[kolom])][kolom] = 1;
             document.getElementById("rij"+ (tellers[kolom]) + kolom).style.backgroundImage = "url('images/fullgeel.png')";
+            items[(tellers[kolom])][kolom] = 1;
             (tellers[kolom])--;
             kleurVerandering("Rood");
             verticaal();
@@ -88,9 +88,13 @@ function verticaal(){
                 winnendekleur = "Geel";
                 scoreGeelValue++;
             }
-            alert(winnendekleur + " is gewonnen!");
+            playWinSound();
+            setTimeout(func, 400);
+            function func() {
+                alert(winnendekleur + " is gewonnen!");
+                leegBord();
+            }
             score();
-            leegBord();
             return false;
         }
         else
@@ -128,9 +132,15 @@ function horizontaal(){
                 winnendekleur = "Geel";
                 scoreGeelValue++;
             }
-            alert(winnendekleur + " is gewonnen!");
+            
+            playWinSound();
+            setTimeout(func, 400);
+            function func() {
+                alert(winnendekleur + " is gewonnen!");
+                leegBord();
+            }
             score();
-            leegBord();
+            
             return false;
         }
         else
@@ -159,9 +169,13 @@ function diagonaal1(){
                     if(items[i-2][e+2] === 2){
                         if(items[i-3][e+3] === 2){
                             scoreRoodValue++;
-                            alert("Rood is gewonnen!");
+                            playWinSound();
+                            setTimeout(func, 400);
+                            function func() {
+                                alert("Rood is gewonnen!");
+                                leegBord();
+                            }
                             score();
-                            leegBord();
                         }
                     }
                      
@@ -172,9 +186,13 @@ function diagonaal1(){
                     if(items[i-2][e+2] === 1){
                         if(items[i-3][e+3] === 1){
                             scoreGeelValue++;
-                            alert("Geel is gewonnen!");
+                            playWinSound();
+                            setTimeout(func, 400);
+                            function func() {
+                                alert("Geel is gewonnen!");
+                                leegBord();
+                            }
                             score();
-                            leegBord();
                         }
                     }
                      
@@ -192,9 +210,13 @@ function diagonaal2(){
                     if(items[i-2][e-2] === 2){
                         if(items[i-3][e-3] === 2){
                             scoreRoodValue++;
-                            alert("Rood is gewonnen!");
+                            playWinSound();
+                            setTimeout(func, 400);
+                            function func() {
+                                alert("Rood is gewonnen!");
+                                leegBord();
+                            }
                             score();
-                            leegBord();
                         }
                     }
                      
@@ -205,9 +227,13 @@ function diagonaal2(){
                     if(items[i-2][e-2] === 1){
                         if(items[i-3][e-3] === 1){
                             scoreGeelValue++;
-                            alert("Geel is gewonnen!");
+                            playWinSound();
+                            setTimeout(func, 400);
+                            function func() {
+                                alert("Geel is gewonnen!");
+                                leegBord();
+                            }
                             score();
-                            leegBord();
                         }
                     }
                      
@@ -215,4 +241,18 @@ function diagonaal2(){
             }
         }
     }
+}
+
+function playSound() {
+
+var Sound = new Audio('images/coinsound.mp3');
+Sound.play();
+    
+}
+
+function playWinSound() {
+
+var Sound = new Audio('images/winningsound.wav');
+Sound.play();
+    
 }
